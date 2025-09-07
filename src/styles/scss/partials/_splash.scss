@@ -1,0 +1,38 @@
+@use './forward' as *;
+
+body {
+    .splash {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100dvw;
+        height: calc(100dvh + .25rem);
+        position: fixed;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+        z-index: 3;
+
+        &.animate {
+            transform: translateY(-100%);
+            transition: transform 300ms ease-in;
+        }
+
+        .title {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+
+            img {
+                display: flex;
+                width: 6rem;
+            }
+
+            h1 {
+                display: flex;
+            }
+        }
+    }
+}

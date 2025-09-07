@@ -1,0 +1,10 @@
+{
+    "liveSassCompile.settings.formats": [
+        {
+            "extensionName": ".css",
+            "format": "compressed",
+            "savePath": "/src/styles",
+        }
+    ],
+    "vscodeTodo.enableWideView": false,
+}

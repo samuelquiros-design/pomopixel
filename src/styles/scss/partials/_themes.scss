@@ -1,0 +1,388 @@
+@use './forward' as *;
+
+body {
+    @media (prefers-color-scheme: light) {
+        background-color: $color_white;
+        color: $color_black;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        background-color: $color_black;
+        color: $color_white;
+    }
+
+    &.theme_light {
+        background-color: $color_white;
+        color: $color_black;
+
+        .checkbox {
+            &.checked {
+                background-position: top 0 left -4rem;
+            }
+
+            &:not(.checked) {
+                background-position: top 0 left 0;
+            }
+        }
+
+        .splash {
+            background-color: $color_white;
+            border-bottom: .25rem solid $color_black;
+        }
+
+        .overlay {
+            background-color: $color_black;
+        }
+
+        .settings {
+            .settings_button {
+                background-position: bottom 0 left 0;
+
+                @media (hover: hover) and (pointer: fine) {
+                    &:hover {
+                        background-position: bottom 0 left -4rem;
+                    }
+                }
+
+                &:active {
+                    background-position: bottom 0 left -12rem;
+                }
+            }
+
+            .audio_toggle {
+                &.muted {
+                    background-position: bottom 0 left 0;
+
+                    @media (hover: hover) and (pointer: fine) {
+                        &:hover {
+                            background-position: bottom 0 left -4rem;
+                        }
+                    }
+
+                    &:active {
+                        background-position: bottom 0 left -12rem;
+                    }
+                }
+
+                &:not(.muted) {
+                    background-position: top 0 left 0;
+
+                    @media (hover: hover) and (pointer: fine) {
+                        &:hover {
+                            background-position: top 0 left -4rem;
+                        }
+                    }
+
+                    &:active {
+                        background-position: top 0 left -12rem;
+                    }
+                }
+            }
+
+            .sidebar_toggle {
+                &.close {
+                    background-position: bottom 0 left 0;
+
+                    @media (hover: hover) and (pointer: fine) {
+                        &:hover {
+                            background-position: bottom 0 left -4rem;
+                        }
+                    }
+
+                    &:active {
+                        background-position: bottom 0 left -12rem;
+                    }
+                }
+
+                &:not(.close) {
+                    background-position: top 0 left 0;
+
+                    @media (hover: hover) and (pointer: fine) {
+                        &:hover {
+                            background-position: top 0 left -4rem;
+                        }
+                    }
+
+                    &:active {
+                        background-position: top 0 left -12rem;
+                    }
+                }
+            }
+        }
+
+        .sidebar {
+            background-color: $color_white;
+            border-left: .25rem solid $color_black;
+
+            .settings_menu_section {
+                h2 {
+                    color: $color_black;
+                }
+
+                .settings_menu_list {
+                    .settings_menu_list_item {
+                        color: $color_black;
+
+                        @media (hover: hover) and (pointer: fine) {
+                            &:hover {
+                                border-bottom-color: $color_black;
+                            }
+                        }
+
+                        .interval_control {
+                            #long_interval_value {
+
+                                color: $color_black;
+                            }
+
+                            .interval_control_adjust {
+
+                                color: $color_black;
+
+                                @media (hover: hover) and (pointer: fine) {
+                                    &:hover {
+                                        color: $color_darkgrey;
+                                    }
+                                }
+
+                                &:active {
+                                    color: $color_lightgrey;
+                                }
+                            }
+
+                        }
+
+                        #automatic_sequence_toggle {
+
+                            color: $color_black;
+                        }
+
+                        #reset_button {
+
+                            color: $color_black;
+                        }
+
+                        &.current_alert {
+                            border-bottom-color: $color_black;
+                        }
+                    }
+                }
+            }
+        }
+
+        .timer {
+            .time_display {
+                .time_adjust {
+                    color: $color_black;
+
+                    @media (hover: hover) and (pointer: fine) {
+                        &:hover {
+                            color: $color_darkgrey;
+                        }
+                    }
+
+                    &:active {
+                        color: $color_lightgrey;
+                    }
+                }
+            }
+        }
+
+        .footer {
+            .links {
+                a {
+                    svg {
+                        fill: $color_black;
+                    }
+                }
+            }
+        }
+    }
+
+
+    &.theme_dark {
+        background-color: $color_black;
+        color: $color_white;
+
+        .checkbox {
+            &.checked {
+                background-position: top 0 left -12rem;
+            }
+
+            &:not(.checked) {
+                background-position: top 0 left -8rem;
+            }
+        }
+
+        .splash {
+            background-color: $color_black;
+            border-bottom: .25rem solid $color_white;
+        }
+
+        .overlay {
+            background-color: $color_black;
+        }
+
+        .settings {
+            .settings_button {
+                background-position: bottom 0 left -8rem;
+
+                @media (hover: hover) and (pointer: fine) {
+                    &:hover {
+                        background-position: bottom 0 left -12rem;
+                    }
+                }
+
+                &:active {
+                    background-position: bottom 0 left -4rem;
+                }
+            }
+
+            .audio_toggle {
+                &.muted {
+                    background-position: bottom 0 left -8rem;
+
+                    @media (hover: hover) and (pointer: fine) {
+                        &:hover {
+                            background-position: bottom 0 left -12rem;
+                        }
+                    }
+
+                    &:active {
+                        background-position: bottom 0 left -4rem;
+                    }
+                }
+
+                &:not(.muted) {
+                    background-position: top 0 left -8rem;
+
+                    @media (hover: hover) and (pointer: fine) {
+                        &:hover {
+                            background-position: top 0 left -12rem;
+                        }
+                    }
+
+                    &:active {
+                        background-position: top 0 left -4rem;
+                    }
+                }
+            }
+
+            .sidebar_toggle {
+                &.close {
+                    background-position: bottom 0 left -8rem;
+
+                    @media (hover: hover) and (pointer: fine) {
+                        &:hover {
+                            background-position: bottom 0 left -12rem;
+                        }
+                    }
+
+                    &:active {
+                        background-position: bottom 0 left -4rem;
+                    }
+                }
+
+                &:not(.close) {
+                    background-position: top 0 left -8rem;
+
+                    @media (hover: hover) and (pointer: fine) {
+                        &:hover {
+                            background-position: top 0 left -12rem;
+                        }
+                    }
+
+                    &:active {
+                        background-position: top 0 left -4rem;
+                    }
+                }
+            }
+        }
+
+        .sidebar {
+            background-color: $color_black;
+            border-left: .25rem solid $color_white;
+
+            .settings_menu_section {
+                h2 {
+                    color: $color_white;
+                }
+
+                .settings_menu_list {
+                    .settings_menu_list_item {
+                        color: $color_white;
+
+                        @media (hover: hover) and (pointer: fine) {
+                            &:hover {
+                                border-bottom-color: $color_white;
+                            }
+                        }
+
+                        .interval_control {
+                            #long_interval_value {
+
+                                color: $color_white;
+                            }
+
+                            .interval_control_adjust {
+
+                                color: $color_white;
+
+                                @media (hover: hover) and (pointer: fine) {
+                                    &:hover {
+                                        color: $color_lightgrey;
+                                    }
+                                }
+
+                                &:active {
+                                    color: $color_darkgrey;
+                                }
+                            }
+
+                        }
+
+                        #automatic_sequence_toggle {
+
+                            color: $color_white;
+                        }
+
+                        #reset_button {
+
+                            color: $color_white;
+                        }
+
+                        &.current_alert {
+                            border-bottom-color: $color_white;
+                        }
+                    }
+                }
+            }
+        }
+
+        .timer {
+            .time_display {
+                .time_adjust {
+                    color: $color_white;
+
+                    @media (hover: hover) and (pointer: fine) {
+                        &:hover {
+                            color: $color_lightgrey;
+                        }
+                    }
+
+                    &:active {
+                        color: $color_darkgrey;
+                    }
+                }
+            }
+        }
+
+        .links {
+            a {
+                svg {
+                    fill: $color_white;
+                }
+            }
+        }
+    }
+}

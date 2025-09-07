@@ -1,0 +1,213 @@
+@use './partials/forward' as *;
+
+@use './partials/themes';
+@use './partials/splash';
+@use './partials/header';
+@use './partials/sidebar';
+@use './partials/timer';
+@use './partials/footer';
+
+html {
+    margin: 0;
+    padding: 0;
+    width: 100dvw;
+    height: 100dvh;
+    overflow: hidden;
+    user-select: none;
+
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100dvw;
+        height: 100dvh;
+        overflow: hidden;
+        font-family: 'monogram';
+        font-size: 2rem;
+
+        h1 {
+            font-family: 'boldpixels';
+            font-size: 3rem;
+            font-weight: 400;
+        }
+
+        h2 {
+            font-family: 'boldpixels';
+            font-size: 2rem;
+            font-weight: 400;
+        }
+
+        button {
+            padding: 0;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .click_off {
+            pointer-events: none;
+        }
+
+        .click_on {
+            pointer-events: auto;
+        }
+
+        .overlay {
+            position: fixed;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 300ms ease-in;
+            pointer-events: none;
+            z-index: 2;
+
+            &.open {
+                opacity: calc(1 / 3);
+                pointer-events: auto;
+            }
+        }
+
+        .checkbox {
+            display: flex;
+            position: relative;
+            align-items: center;
+            justify-content: center;
+            aspect-ratio: 1 / 1;
+            width: 2rem;
+            height: 2rem;
+            background-image: url('/src/assets/images/ui/checkbox_sprite.svg');
+            background-position: bottom 0 left 0;
+            background-color: transparent;
+            image-rendering: pixelated;
+            border: none;
+            cursor: pointer;
+        }
+
+        .button_icon {
+            display: flex;
+            position: relative;
+            align-items: center;
+            justify-content: center;
+            aspect-ratio: 4 / 5;
+            width: 4rem;
+            background-image: url('/src/assets/images/ui/button_sprite.svg');
+            background-position: bottom 0 left 0;
+            background-color: transparent;
+            image-rendering: pixelated;
+            border: none;
+            color: $color_black;
+            font-size: 2rem;
+            cursor: pointer;
+
+            img {
+                display: flex;
+                position: absolute;
+            }
+
+            &.current {
+                background-position: bottom 0 left -18rem;
+
+                img {
+                    bottom: 1.25rem;
+                }
+
+                &:active {
+                    background-position: bottom 0 left -12rem;
+
+                    img {
+                        bottom: 1rem;
+                    }
+                }
+            }
+
+            &:not(.current) {
+                img {
+                    bottom: 2rem;
+                }
+
+                @media (hover: hover) and (pointer: fine) {
+                    &:hover {
+                        background-position: bottom 0 left -6rem;
+
+                        img {
+                            bottom: 1.625rem;
+                        }
+                    }
+                }
+
+                &:active {
+                    background-position: bottom 0 left -12rem;
+
+                    img {
+                        bottom: 1rem;
+                    }
+                }
+            }
+        }
+
+        .button_text {
+            display: flex;
+            position: relative;
+            align-items: center;
+            justify-content: center;
+            aspect-ratio: 12 / 5;
+            width: 12rem;
+            background-image: url('/src/assets/images/ui/button_wide_sprite.svg');
+            background-position: bottom 0 left 0;
+            background-color: transparent;
+            image-rendering: pixelated;
+            border: none;
+            color: $color_black;
+            font-family: 'boldpixels';
+            font-size: 2rem;
+            cursor: pointer;
+
+            span {
+                display: flex;
+                position: absolute;
+            }
+
+            &.current {
+                background-position: bottom 0 left -42rem;
+
+                span {
+                    bottom: .75rem;
+                }
+
+                &:active {
+                    background-position: bottom 0 left -28rem;
+
+                    span {
+                        bottom: .5rem;
+                    }
+                }
+            }
+
+            &:not(.current) {
+                background-position: bottom 0 left 0;
+
+                span {
+                    bottom: 1.5rem;
+                }
+
+                @media (hover: hover) and (pointer: fine) {
+                    &:hover {
+                        background-position: bottom 0 left -14rem;
+
+                        span {
+                            bottom: 1.25rem;
+                        }
+                    }
+                }
+
+                &:active {
+                    background-position: bottom 0 left -28rem;
+
+                    span {
+                        bottom: .5rem;
+                    }
+                }
+            }
+        }
+    }
+}

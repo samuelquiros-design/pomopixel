@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="/icon.svg">
+  <!-- <link rel="stylesheet" href="/src/styles/main.css"> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PomoPixel</title>
+</head>
+
+<body>
+  <div class="splash">
+    <div class="title">
+      <img src="/icon.svg" alt="Logotipo de PomoPixel">
+      <h1>PomoPixel</h1>
+    </div>
+  </div>
+
+  <div class="overlay"></div>
+
+  <header class="header">
+    <div class="title">
+      <img src="/icon.svg" alt="Logotipo de PomoPixel">
+      <h1>PomoPixel</h1>
+    </div>
+    <div class="settings">
+      <button class="settings_button theme_toggle" aria-label="Theme"></button>
+      <button class="settings_button audio_toggle" aria-label="Audio"></button>
+      <button class="settings_button sidebar_toggle general_settings" aria-label="Settings"
+        data-target="settings_menu"></button>
+    </div>
+  </header>
+
+  <aside id="settings_menu" class="sidebar">
+    <header class="sidebar_header">
+      <div class="settings">
+        <button class="settings_button theme_toggle" aria-label="Theme"></button>
+        <button class="settings_button audio_toggle" aria-label="Audio"></button>
+        <button class="settings_button sidebar_toggle general_settings close" aria-label="Settings"
+          data-target="settings_menu"></button>
+      </div>
+    </header>
+    <div class="sidebar_content">
+      <div class="settings_menu_section">
+        <h2 class="settings_menu_title">Timer settings</h2>
+        <ul class="settings_menu_list">
+          <li class="settings_menu_list_item">
+            <span>Long break interval</span>
+            <div class="interval_control">
+              <button id="decrease_interval" class="interval_control_adjust">−</button>
+              <span id="long_break_interval">4</span>
+              <button id="increase_interval" class="interval_control_adjust">+</button>
+            </div>
+          </li>
+          <li class="settings_menu_list_item">
+            <button id="automatic_sequence_toggle">
+              <span>Automatic session start</span>
+              <span id="automatic_sequence_checkbox" class="checkbox"></span>
+            </button>
+          </li>
+          <li class="settings_menu_list_item">
+            <button id="reset_button">Reset timer settings</button>
+          </li>
+        </ul>
+      </div>
+      <div class="settings_menu_section">
+        <h2 class="settings_menu_title">Alert selector</h2>
+        <ul class="settings_menu_list">
+          <li class="settings_menu_list_item audio_option current_alert" data-alert="short">Beep</li>
+          <li class="settings_menu_list_item audio_option" data-alert="medium_01">Level Up</li>
+          <li class="settings_menu_list_item audio_option" data-alert="medium_02">Ding Dong</li>
+          <li class="settings_menu_list_item audio_option" data-alert="long">Melody</li>
+        </ul>
+      </div>
+    </div>
+    <footer class="sidebar_footer">
+      <div class="links">
+        <a href="" class="links_github">
+          <svg class="github_logo" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M12 1C5.923 1 1 5.923 1 12c0 4.867 3.149 8.979 7.521 10.436.55.096.756-.233.756-.522 0-.262-.013-1.128-.013-2.049-2.764.509-3.479-.674-3.699-1.292-.124-.317-.66-1.293-1.127-1.554-.385-.207-.936-.715-.014-.729.866-.014 1.485.797 1.691 1.128.99 1.663 2.571 1.196 3.204.907.096-.715.385-1.196.701-1.471-2.448-.275-5.005-1.224-5.005-5.432 0-1.196.426-2.186 1.128-2.956-.111-.275-.496-1.402.11-2.915 0 0 .921-.288 3.024 1.128a10.193 10.193 0 0 1 2.75-.371c.936 0 1.871.123 2.75.371 2.104-1.43 3.025-1.128 3.025-1.128.605 1.513.221 2.64.111 2.915.701.77 1.127 1.747 1.127 2.956 0 4.222-2.571 5.157-5.019 5.432.399.344.743 1.004.743 2.035 0 1.471-.014 2.654-.014 3.025 0 .289.206.632.756.522C19.851 20.979 23 16.854 23 12c0-6.077-4.922-11-11-11Z">
+            </path>
+          </svg>
+        </a>
+      </div>
+    </footer>
+  </aside>
+
+  <main class="timer">
+    <div class="mode_selector">
+      <button class="mode_button button_text current" data-mode="focus"><span>Focus</span></button>
+      <div class="mode_selector_breaks">
+        <button class="mode_button button_text" data-mode="short_break"><span>Short Break</span></button>
+        <button class="mode_button button_text" data-mode="long_break"><span>Long Break</span></button>
+      </div>
+    </div>
+    <div class="time_display">
+      <button id="decrease_time" class="time_adjust hidden">−</button>
+      <span id="time_text"></span>
+      <button id="increase_time" class="time_adjust hidden">+</button>
+    </div>
+    <div class="session_alert hidden">
+      <h2><span id="session_alert_mode"></span> finished!</h2>
+      <button id="session_alert_continue" class="button_text"><span>Continue</span></button>
+    </div>
+    <div class="control_buttons">
+      <button id="start_pause_button" class="control_button button_icon" aria-label="Start / Pause">
+        <img src="/src/assets/images/ui/icon_play.svg" alt="Start icon" class="start_button">
+        <img src="/src/assets/images/ui/icon_pause.svg" alt="Pause icon" class="pause_button">
+      </button>
+      <button id="stop_button" class="control_button button_icon" aria-label="Stop">
+        <img src="/src/assets/images/ui/icon_stop.svg" alt="Stop icon">
+      </button>
+      <button id="edit_button" class="button_icon" aria-label="Edit">
+        <img src="/src/assets/images/ui/icon_edit.svg" alt="Edit icon" class="edit_button_edit">
+        <img src="/src/assets/images/ui/icon_save.svg" alt="Save icon" class="edit_button_save">
+      </button>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="session_counter">
+      <span class="session_counter_text">Focus sessions: </span>
+      <span id="session_counter_amount"></span>
+    </div>
+    <div class="links">
+      <a href="https://github.com/samuelquiros-design/pomopixel" target="_blank" class="links_github">
+        <svg class="github_logo" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M12 1C5.923 1 1 5.923 1 12c0 4.867 3.149 8.979 7.521 10.436.55.096.756-.233.756-.522 0-.262-.013-1.128-.013-2.049-2.764.509-3.479-.674-3.699-1.292-.124-.317-.66-1.293-1.127-1.554-.385-.207-.936-.715-.014-.729.866-.014 1.485.797 1.691 1.128.99 1.663 2.571 1.196 3.204.907.096-.715.385-1.196.701-1.471-2.448-.275-5.005-1.224-5.005-5.432 0-1.196.426-2.186 1.128-2.956-.111-.275-.496-1.402.11-2.915 0 0 .921-.288 3.024 1.128a10.193 10.193 0 0 1 2.75-.371c.936 0 1.871.123 2.75.371 2.104-1.43 3.025-1.128 3.025-1.128.605 1.513.221 2.64.111 2.915.701.77 1.127 1.747 1.127 2.956 0 4.222-2.571 5.157-5.019 5.432.399.344.743 1.004.743 2.035 0 1.471-.014 2.654-.014 3.025 0 .289.206.632.756.522C19.851 20.979 23 16.854 23 12c0-6.077-4.922-11-11-11Z">
+          </path>
+        </svg>
+      </a>
+    </div>
+  </footer>
+
+  <script type="module" src="/src/app/main.js"></script>
+</body>
+
+</html>
